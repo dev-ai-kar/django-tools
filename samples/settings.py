@@ -20,10 +20,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
-# Store passwords and secret keys in list from external file
-password_lst = []
-with open(BASE_DIR /'secret_key.txt') as f:
-    password_lst = f.readlines()
     
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config('SECRET_KEY') 
@@ -82,17 +78,24 @@ WSGI_APPLICATION = 'samples.wsgi.application'
 
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
+#         'ENGINE': 'django.db.backends.sqlite3','django.db.backends.mysql'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'mysql_server_has_gone_away',
+        'CONN_MAX_AGE': 0,
         'NAME': config('DB_NAME'), 
         'USER': config('DB_USER'),
         'PASSWORD': config('DB_PASSWORD'),
+        'OPTIONS': {
+            # Enable MySQL strict mode. "MySQL's Strict Mode fixes many data
+            # integrity problems in MySQL, such as data truncation upon
+            # insertion, by escalating warnings into errors."
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+        },
     }
 }
 
