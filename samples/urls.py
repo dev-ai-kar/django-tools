@@ -38,6 +38,12 @@ urlpatterns = [
     # Play with Django Sessions
     path('hello/', include('hello.urls')),
     
+    # Authentication Views Refer: https://docs.djangoproject.com/en/3.0/topics/auth/default/#module-django.contrib.auth.views
+    path('accounts/', include('django.contrib.auth.urls')),  
+    
+    # Autos CRUD App 
+    path('autos/', include('autos.urls')),     
+    
     # Static HTML files
     url(r'^site/(?P<path>.*)$', serve,
         {'document_root': SITE_ROOT, 'show_indexes': True},
