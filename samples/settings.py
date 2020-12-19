@@ -33,8 +33,11 @@ ALLOWED_HOSTS = ["djangotools.raitkalaraag.in", "raitkalaraag.in"]
 # Application definition
 
 INSTALLED_APPS = [
-    'home.apps.HomeConfig',
+    
     'polls.apps.PollsConfig',
+    'home.apps.HomeConfig',
+    'hello.apps.HelloConfig',
+    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
