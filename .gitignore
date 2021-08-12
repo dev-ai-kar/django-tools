@@ -1,6 +1,0 @@
-db.sqlite3
-secret_key.txt
-migrations
-__pycache__
-.env
-log.txt
